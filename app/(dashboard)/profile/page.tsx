@@ -61,9 +61,7 @@ export default function ProfilePage() {
     setSuccessMessage('');
   };
 
-  const handleRoleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newRole = e.target.value as UserRole;
-    
+  const handleRoleChange = (newRole: UserRole) => {
     // If role is changing, show confirmation modal
     if (newRole !== user?.role) {
       setPendingRole(newRole);
@@ -192,20 +190,42 @@ export default function ProfilePage() {
           </div>
 
           <div>
-            <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-3">
               Role
             </label>
-            <select
-              id="role"
-              name="role"
-              value={formData.role}
-              onChange={handleRoleChange}
-              disabled={isSaving}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:border-blue-500 focus:ring-blue-500 transition-colors"
-            >
-              <option value="driver">Driver</option>
-              <option value="owner">Truck Owner</option>
-            </select>
+            <div className="space-y-3">
+              <label className="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                <input
+                  type="radio"
+                  name="role"
+                  value="driver"
+                  checked={formData.role === 'driver'}
+                  onChange={() => handleRoleChange('driver')}
+                  disabled={isSaving}
+                  className="w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500"
+                />
+                <div className="ml-3">
+                  <span className="block text-sm font-medium text-gray-900">Driver</span>
+                  <span className="block text-xs text-gray-500">Join fleets and access assigned vehicles</span>
+                </div>
+              </label>
+              
+              <label className="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                <input
+                  type="radio"
+                  name="role"
+                  value="owner"
+                  checked={formData.role === 'owner'}
+                  onChange={() => handleRoleChange('owner')}
+                  disabled={isSaving}
+                  className="w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500"
+                />
+                <div className="ml-3">
+                  <span className="block text-sm font-medium text-gray-900">Truck Owner</span>
+                  <span className="block text-xs text-gray-500">Manage your fleet and register vehicles</span>
+                </div>
+              </label>
+            </div>
           </div>
 
           {errors.general && (
