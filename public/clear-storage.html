@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clear Browser Storage</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #333;
+      margin-top: 0;
+    }
+    button {
+      background: #dc2626;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px 5px;
+    }
+    button:hover {
+      background: #b91c1c;
+    }
+    .success {
+      background: #10b981;
+      color: white;
+      padding: 12px;
+      border-radius: 6px;
+      margin: 20px 0;
+      display: none;
+    }
+    .info {
+      background: #3b82f6;
+      color: white;
+      padding: 12px;
+      border-radius: 6px;
+      margin: 20px 0;
+    }
+    pre {
+      background: #f3f4f6;
+      padding: 12px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧹 Clear Browser Storage</h1>
+    
+    <div class="info">
+      <strong>Note:</strong> The app now uses file-based storage. If you're having login issues, clear your browser's localStorage to remove old data.
+    </div>
+    
+    <div id="current-data">
+      <h3>Current localStorage Data:</h3>
+      <pre id="storage-content">Loading...</pre>
+    </div>
+    
+    <button onclick="clearStorage()">Clear All Storage</button>
+    <button onclick="clearUsers()">Clear Users Only</button>
+    <button onclick="location.href='/'">Go to Login</button>
+    
+    <div id="success" class="success">
+      ✅ Storage cleared successfully! You can now login with the test accounts.
+    </div>
+  </div>
+
+  <script>
+    function displayStorage() {
+      const data = {
+        users: localStorage.getItem('tms_users'),
+        otherKeys: Object.keys(localStorage).filter(k => k !== 'tms_users')
+      };
+      
+      document.getElementById('storage-content').textContent = 
+        JSON.stringify(data, null, 2);
+    }
+    
+    function clearStorage() {
+      localStorage.clear();
+      sessionStorage.clear();
+      document.getElementById('success').style.display = 'block';
+      displayStorage();
+      console.log('All storage cleared');
+    }
+    
+    function clearUsers() {
+      localStorage.removeItem('tms_users');
+      document.getElementById('success').style.display = 'block';
+      displayStorage();
+      console.log('Users cleared from localStorage');
+    }
+    
+    // Display current storage on load
+    displayStorage();
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "user_test_owner_001",
+    "email": "owner@test.com",
+    "password": "$2a$10$0lBsvPQMuH9yvVl/kITyhuLxJPh53YZQXWRlnGy9uVBdwni74OFUW",
+    "name": "Test Owner",
+    "role": "owner",
+    "createdAt": "2025-11-16T00:22:50.087Z",
+    "updatedAt": "2025-11-16T00:22:50.088Z"
+  },
+  {
+    "id": "user_test_driver_001",
+    "email": "driver@test.com",
+    "password": "$2a$10$bZOmAV9FSpfzCVIU2.0sc.y8o7DhS6TtVV929vWRd0S7QN6FfhUy6",
+    "name": "Test Driver",
+    "role": "driver",
+    "createdAt": "2025-11-16T00:22:50.088Z",
+    "updatedAt": "2025-11-16T00:22:50.088Z"
+  }
+]
