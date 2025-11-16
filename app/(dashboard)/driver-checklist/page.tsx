@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import { ChecklistManager } from '@/components/checklist/ChecklistManager';
 import { ChecklistViewer } from '@/components/checklist/ChecklistViewer';
 
+export const dynamic = 'force-dynamic';
+
 export default function DriverChecklistPage() {
   const { data: session, status } = useSession();
   const router = useRouter();

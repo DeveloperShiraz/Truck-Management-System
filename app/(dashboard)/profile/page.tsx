@@ -8,6 +8,8 @@ import { Modal } from '@/components/ui/Modal';
 import { useRouter } from 'next/navigation';
 import { UserRole } from '@/lib/types/user';
 
+export const dynamic = 'force-dynamic';
+
 export default function ProfilePage() {
   const { user, isLoading } = useAuth();
   const router = useRouter();

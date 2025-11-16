@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { JoinFleetForm } from '@/components/fleet/JoinFleetForm';
 
+export const dynamic = 'force-dynamic';
+
 export default function DashboardPage() {
   const { user, isLoading } = useAuth();
   const { update } = useSession();

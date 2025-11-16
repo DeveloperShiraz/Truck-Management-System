@@ -7,6 +7,8 @@ import { FleetCodeGenerator } from '@/components/fleet/FleetCodeGenerator';
 import { FleetMemberList } from '@/components/fleet/FleetMemberList';
 import { TruckRegistration } from '@/components/fleet/TruckRegistration';
 
+export const dynamic = 'force-dynamic';
+
 interface FleetCodeData {
   code: string;
   expiresAt: string;

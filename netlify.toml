@@ -2,19 +2,11 @@
   command = "npm run build"
   publish = ".next"
 
-# Redirects for Next.js App Router client-side routing
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-# Serverless functions directory
-[functions]
-  directory = ".netlify/functions"
-  node_bundler = "esbuild"
+# Use Next.js Runtime for proper server-side rendering
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
 # Environment variables (set these in Netlify UI)
 # NEXTAUTH_SECRET
 # NEXTAUTH_URL
 # DEEPSEEK_API_KEY
-# NODE_ENV
