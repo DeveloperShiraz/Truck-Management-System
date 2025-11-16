@@ -17,7 +17,7 @@ export const LoginForm: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [generalError, setGeneralError] = useState('');
 
-  const registered = searchParams.get('registered');
+  const registered = searchParams?.get('registered');
 
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {};
